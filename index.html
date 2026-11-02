@@ -3,18 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta
+      name="description"
+      content="A simple stopwatch with start, pause and reset. Shows the time in the browser tab title." />
+    <meta name="theme-color" content="#ffd60a" />
+    <title>Timer</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="header">
-      <span id="minuts">0</span>:<span id="seconds">0</span>
-    </div>
-    <div class="content">
-      <button id="start" onclick="increase()">start</button>
-      <button id="stop">Stop</button>
-      <button id="reset" onclick="reeset()">reset</button>
-    </div>
+    <header class="top">
+      <h1 class="brand">Timer</h1>
+      <p class="chip" id="chip" aria-hidden="true">Ready</p>
+    </header>
+
+    <main>
+      <div class="clock" id="clock" role="timer" aria-label="Elapsed time">00:00</div>
+      <div class="minute" aria-hidden="true"><span class="minute-fill" id="minute-fill"></span></div>
+
+      <div class="controls">
+        <button type="button" id="toggle" class="btn btn-primary">Start</button>
+        <button type="button" id="reset" class="btn btn-ghost" disabled>Reset</button>
+      </div>
+
+      <p class="shortcuts">Shortcuts: <kbd>Space</kbd> start or pause, <kbd>R</kbd> reset.</p>
+
+      <!-- Screen reader announcements for state changes and each full minute. -->
+      <p class="visually-hidden" id="announcer" role="status" aria-live="polite"></p>
+    </main>
+
+    <script src="timer-core.js"></script>
     <script src="main.js"></script>
   </body>
 </html>
